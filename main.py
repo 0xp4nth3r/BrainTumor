@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image
 from ultralytics import YOLO
+import cv2
 
 
 st.set_page_config(page_title="Brain Tumour X-ray image analysis",page_icon="❄️")
@@ -31,7 +32,7 @@ button_tumour = st.button("Submit",use_container_width=True)
 
 if button_tumour:
 
-        model_segment = YOLO(r"models\yolov8_segment_brain_tumor_model.pt") 
+        model_segment = YOLO("yolov8_segment_brain_tumor_model.pt") 
         
         image = Image.open(image).save("x-ray.png")
 
@@ -66,4 +67,50 @@ if button_tumour:
 It’s important to see your healthcare provider if you’re experiencing these symptoms.""")
         else:
             st.info("You are safe")
+        
+
+st.title("Generating X-ray images")
+
+generate_button = st.button("Generate")
+# Saves
+if generate_button:
+    c1,c2= st.columns(2)
+    img = Image.open(image)
+    img = img.save("img.jpg")
+    # OpenCv Read
+    img = cv2.imread("img.jpg")
+    im1 = cv2.applyColorMap(img, cv2.COLORMAP_AUTUMN)
+    im2 = cv2.applyColorMap(img, cv2.COLORMAP_BONE)
+    im3 = cv2.applyColorMap(img, cv2.COLORMAP_JET)
+    im4 = cv2.applyColorMap(img, cv2.COLORMAP_WINTER)
+    im5 = cv2.applyColorMap(img, cv2.COLORMAP_RAINBOW)
+    im6 = cv2.applyColorMap(img, cv2.COLORMAP_OCEAN)
+    im7 = cv2.applyColorMap(img, cv2.COLORMAP_SUMMER)
+    im8 = cv2.applyColorMap(img, cv2.COLORMAP_SPRING)
+    im9 = cv2.applyColorMap(img, cv2.COLORMAP_COOL)
+    im10 = cv2.applyColorMap(img, cv2.COLORMAP_HSV)
+    im11 = cv2.applyColorMap(img, cv2.COLORMAP_PINK)
+    im12 = cv2.applyColorMap(img, cv2.COLORMAP_HOT)
+
+    with c1:
+        st.image(im1,use_column_width=True)
+        st.image(im2,use_column_width=True)
+        st.image(im3,use_column_width=True)
+        st.image(im4,use_column_width=True)
+        st.image(im5,use_column_width=True)
+        st.image(im6,use_column_width=True)
+        
+    with c2:
+        st.image(im7,use_column_width=True)
+        st.image(im8,use_column_width=True)
+        st.image(im9,use_column_width=True)
+        st.image(im10,use_column_width=True)
+        st.image(im11,use_column_width=True)
+        st.image(im12,use_column_width=True)
+        
+
+        
+        
+        
+        
         
