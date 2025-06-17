@@ -15,23 +15,5 @@ This project aims to develop a machine learning-based system for **brain tumor d
 
 ---
 
-##  Technologies Used
 
-- **Python**  
-- **OpenCV**  
-- **TensorFlow / Keras**  
-- **Matplotlib / Seaborn**  
-- **Tkinter (for GUI)**  
-- **NumPy, Pandas, Scikit-learn**
 
----
-
----
-
-## 🚀 How to Run
-
-### 1. Clone the Repository
-
-```bash
-git clone git@github.com:0xp4nth3r/BrainTumor.git
-cd BrainTumor
